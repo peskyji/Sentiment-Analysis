@@ -3,7 +3,5 @@ pydentic
 pandas
 nltk
 numpy
-scikit-learn
+scikit-learn==1.2.2
 uvicorn
-uvloop
-xgboost
