@@ -1,7 +1,8 @@
 fastapi
 pydentic
-pandas
-nltk
-numpy
-scikit-learn==1.2.2
 uvicorn
+pandas==1.5.3
+nltk==3.8.1
+numpy==1.23.5
+scikit-learn==1.2.2
+xgboost==1.7.6
