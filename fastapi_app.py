@@ -53,6 +53,7 @@ def prediction(data:Input):
                 'xgb':[float(xgb_prob[0]), float(xgb_prob[1])],
                 'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
             }
+    print(prob)
     return json.dumps(prob)
 
 
