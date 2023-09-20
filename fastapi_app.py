@@ -11,7 +11,7 @@ import joblib
 app = FastAPI()
 
 if __name__ == "__main__":
-    run(app)
+    run(app, ws_ping_timeout = 60)
 
 # create objects to receive input from client
 class Input(BaseModel):
@@ -94,7 +94,7 @@ async def prediction(data:Input):
         print("xgb prediction completed")
     except Exception as exp:
         print(f"problem xgb prediction - {str(exp)}")
-
+        
     try:
         prob = {
                     'lr':[float(lr_prob[0]), float(lr_prob[1])], 
