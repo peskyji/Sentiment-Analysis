@@ -35,7 +35,8 @@ def preprocessing_task(review):
 
 @app.post("/predict")
 async def prediction(data:Input):
-    data = data.dict()
+    data = dict(data)
+    print(data)
     tfidf = pickle.load(open('Models/tfidf.pkl', 'rb'))
     lr = pickle.load(open('Models/lr.pkl', 'rb'))
     xgb = pickle.load(open('Models/xgb.pkl', 'rb'))
