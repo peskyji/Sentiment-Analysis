@@ -79,6 +79,12 @@ async def prediction(data:Input):
     except Exception as exp:
         print(f"problem in transforming to tfidif vectors - {str(exp)}")
         # print("vector created")
+        
+    try:
+        xgb_prob =  xgb.predict_proba(X)[0]
+        print("xgb prediction completed")
+    except Exception as exp:
+        print(f"problem xgb prediction - {str(exp)}")
     try:
         lr_prob =  lr.predict_proba(X)[0]
         print("lr prediction completed")
@@ -89,12 +95,7 @@ async def prediction(data:Input):
         print("cnb prediction completed")
     except Exception as exp:
         print(f"problem cnb prediction - {str(exp)}")
-    try:
-        xgb_prob =  xgb.predict_proba(X)[0]
-        print("xgb prediction completed")
-    except Exception as exp:
-        print(f"problem xgb prediction - {str(exp)}")
-        
+       
     try:
         prob = {
                     'lr':[float(lr_prob[0]), float(lr_prob[1])], 
