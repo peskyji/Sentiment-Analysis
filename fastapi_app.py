@@ -11,7 +11,7 @@ import joblib
 app = FastAPI()
 
 if __name__ == "__main__":
-    run(app, timeout_keep_alive=60)
+    run(app, timeout_keep_alive=120)
 
 # create objects to receive input from client
 class Input(BaseModel):
