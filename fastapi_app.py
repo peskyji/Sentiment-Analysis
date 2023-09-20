@@ -78,14 +78,17 @@ async def prediction(data:Input):
         # print("vector created")
     try:
         lr_prob =  lr.predict_proba(X)[0]
+        print("lr prediction completed")
     except Exception as exp:
         print(f"problem lr prediction - {str(exp)}")
     try:
         xgb_prob =  xgb.predict_proba(X)[0]
+        print("xgb prediction completed")
     except Exception as exp:
         print(f"problem xgb prediction - {str(exp)}")
     try:
         cnb_prob =  cnb.predict_proba(X)[0]
+        print("cnb prediction completed")
     except Exception as exp:
         print(f"problem cnb prediction - {str(exp)}")
     try:
