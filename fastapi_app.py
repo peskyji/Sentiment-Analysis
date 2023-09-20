@@ -34,7 +34,7 @@ def preprocessing_task(review):
     return review
 
 @app.post("/predict")
-def prediction(data:Input):
+async def prediction(data:Input):
     tfidf = pickle.load(open('Models/tfidf.pkl', 'rb'))
     lr = pickle.load(open('Models/lr.pkl', 'rb'))
     xgb = pickle.load(open('Models/xgb.pkl', 'rb'))
@@ -54,7 +54,8 @@ def prediction(data:Input):
                 'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
             }
     print(prob)
-    return json.dumps(prob)
+    return {'success':'True'}
+    # return json.dumps(prob)
 
 
 
