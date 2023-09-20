@@ -1,6 +1,7 @@
 fastapi
 pydentic
 uvicorn
+httptools
 pandas==1.5.3
 nltk==3.8.1
 numpy==1.23.5
