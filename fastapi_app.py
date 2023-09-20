@@ -38,52 +38,52 @@ async def prediction(data:Input):
     data = dict(data)
     print(data)
     print(type(data))
-    try:
-        tfidf = pickle.load(open('Models/tfidf.pkl', 'rb'))
-    except:
-        print("problem in loading tfidf")
-    try:
-        lr = pickle.load(open('Models/lr.pkl', 'rb'))
-    except:
-        print("problem in loading lr")
-    try:
-        xgb = pickle.load(open('Models/xgb.pkl', 'rb'))
-    except:
-        print("problem in loading xgb")
-    try:
-        cnb = pickle.load(open('Models/cnb.pkl', 'rb'))
-    except:
-        print("problem in loading cnb")
-    try:
-        review = preprocessing_task(data['reviews'])
-    except:
-        print("problem in preprocessing")
-    try:
-        X = tfidf.transform(pd.Series(review))
-    except:
-        print("problem in transforming to tfidif vectors")
-    # print("vector created")
-    try:
-        lr_prob = lr.predict_proba(X)[0]
-    except:
-        print("problem lr prediction")
-    try:
-        xgb_prob = xgb.predict_proba(X)[0]
-    except:
-        print("problem xgb prediction")
-    try:
-        cnb_prob = cnb.predict_proba(X)[0]
-    except:
-        print("problem cnb prediction")
-    try:
-        prob = {
-                    'lr':[float(lr_prob[0]), float(lr_prob[1])], 
-                    'xgb':[float(xgb_prob[0]), float(xgb_prob[1])],
-                    'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
-                }
-        print(prob)
-    except:
-        print("problem in forming return response message")
+    # try:
+    #     tfidf = pickle.load(open('Models/tfidf.pkl', 'rb'))
+    # except:
+    #     print("problem in loading tfidf")
+    # try:
+    #     lr = pickle.load(open('Models/lr.pkl', 'rb'))
+    # except:
+    #     print("problem in loading lr")
+    # try:
+    #     xgb = pickle.load(open('Models/xgb.pkl', 'rb'))
+    # except:
+    #     print("problem in loading xgb")
+    # try:
+    #     cnb = pickle.load(open('Models/cnb.pkl', 'rb'))
+    # except:
+    #     print("problem in loading cnb")
+    # try:
+    #     review = preprocessing_task(data['reviews'])
+    # except:
+    #     print("problem in preprocessing")
+    # try:
+    #     X = tfidf.transform(pd.Series(review))
+    # except:
+    #     print("problem in transforming to tfidif vectors")
+    # # print("vector created")
+    # try:
+    #     lr_prob = lr.predict_proba(X)[0]
+    # except:
+    #     print("problem lr prediction")
+    # try:
+    #     xgb_prob = xgb.predict_proba(X)[0]
+    # except:
+    #     print("problem xgb prediction")
+    # try:
+    #     cnb_prob = cnb.predict_proba(X)[0]
+    # except:
+    #     print("problem cnb prediction")
+    # try:
+    #     prob = {
+    #                 'lr':[float(lr_prob[0]), float(lr_prob[1])], 
+    #                 'xgb':[float(xgb_prob[0]), float(xgb_prob[1])],
+    #                 'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
+    #             }
+    #     print(prob)
+    # except:
+    #     print("problem in forming return response message")
     return {'success':'True'}
     # return json.dumps(prob)
 
