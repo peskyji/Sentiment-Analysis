@@ -1,10 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 import pickle
 from nltk.stem import PorterStemmer
 import pandas as pd
 import re
 import json
+import joblib
 
 # create an object of FastAPI
 app = FastAPI()
@@ -20,61 +21,73 @@ def homepage():
     return {'a':'b'}
 
 # create another route for calculation
+def load_models():
+    tfidf, lr, xgb, cnb = None, None, None, None
+    try:
+        tfidf =  joblib.load('Models/tfidf.joblib')
+        print(tfidf)
+    except Exception as exp:
+        print(f"problem in loading tfidf - {str(exp)}")
+    try:
+        lr =  joblib.load('Models/lr.joblib')
+        print(lr)
+    except Exception as exp:
+        print(f"problem in loading lr - {str(exp)}")
+    try:
+        xgb =  joblib.load('Models/xgb.joblib')
+        print(xgb)
+    except Exception as exp:
+        print(f"problem in loading xgb - {str(exp)}")
+    try:
+        cnb =  joblib.load('Models/cnb.joblib')
+        print(cnb)
+    except Exception as exp:
+        print(f"problem in loading cnb - {str(exp)}")
+    
+    return tfidf, lr, xgb, cnb
 
 def preprocessing_task(review):
     ps = PorterStemmer()
     review = re.sub(r'[^A-Za-z\s]', '', review)
-    # print("Special Characters removed from review")
+    print("Special Characters removed from review")
     review = re.sub(r' +', ' ', review)
-    # print("extra spaces removed")
+    print("extra spaces removed")
     review = review.lower()
-    # print("Word Stemming stated...")
+    print("Word Stemming stated...")
     review = " ".join([ps.stem(word) for word in review.split()])
-    # print("Stemming Completed")
+    print("Stemming Completed")
     return review
+
+
 
 @app.post("/predict")
 async def prediction(data:Input):
     data = dict(data)
     print(data)
-    print(type(data))
+    tfidf, lr, xgb, cnb = load_models()
+    print("models loaded")
     try:
-        tfidf = await pickle.load(open('Models/tfidf.pkl', 'rb'))
-    except:
-        print("problem in loading tfidf")
+        review = preprocessing_task(data['reviews'])
+    except Exception as exp:
+        print(f"problem in preprocessing - {str(exp)}")
     try:
-        lr = await pickle.load(open('Models/lr.pkl', 'rb'))
-    except:
-        print("problem in loading lr")
+        X =  tfidf.transform(pd.Series(review))
+        print("vector created")
+    except Exception as exp:
+        print(f"problem in transforming to tfidif vectors - {str(exp)}")
+        # print("vector created")
     try:
-        xgb = await pickle.load(open('Models/xgb.pkl', 'rb'))
-    except:
-        print("problem in loading xgb")
+        lr_prob =  lr.predict_proba(X)[0]
+    except Exception as exp:
+        print(f"problem lr prediction - {str(exp)}")
     try:
-        cnb = await pickle.load(open('Models/cnb.pkl', 'rb'))
-    except:
-        print("problem in loading cnb")
+        xgb_prob =  xgb.predict_proba(X)[0]
+    except Exception as exp:
+        print(f"problem xgb prediction - {str(exp)}")
     try:
-        review = await preprocessing_task(data['reviews'])
-    except:
-        print("problem in preprocessing")
-    try:
-        X = await tfidf.transform(pd.Series(review))
-    except:
-        print("problem in transforming to tfidif vectors")
-    # print("vector created")
-    try:
-        lr_prob = await lr.predict_proba(X)[0]
-    except:
-        print("problem lr prediction")
-    try:
-        xgb_prob = await xgb.predict_proba(X)[0]
-    except:
-        print("problem xgb prediction")
-    try:
-        cnb_prob = await cnb.predict_proba(X)[0]
-    except:
-        print("problem cnb prediction")
+        cnb_prob =  cnb.predict_proba(X)[0]
+    except Exception as exp:
+        print(f"problem cnb prediction - {str(exp)}")
     try:
         prob = {
                     'lr':[float(lr_prob[0]), float(lr_prob[1])], 
@@ -82,10 +95,10 @@ async def prediction(data:Input):
                     'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
                 }
         print(prob)
-    except:
-        print("problem in forming return response message")
-    return {'success':'True'}
-    # return json.dumps(prob)
+    except Exception as exp:
+        print(f"problem in forming return response message - {str(exp)}")
+    # return {'success':'True'}
+    return json.dumps(prob)
 
 
 
