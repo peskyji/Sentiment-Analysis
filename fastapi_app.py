@@ -37,12 +37,13 @@ def preprocessing_task(review):
 async def prediction(data:Input):
     data = dict(data)
     print(data)
+    print(type(data))
     tfidf = pickle.load(open('Models/tfidf.pkl', 'rb'))
     lr = pickle.load(open('Models/lr.pkl', 'rb'))
     xgb = pickle.load(open('Models/xgb.pkl', 'rb'))
     cnb = pickle.load(open('Models/cnb.pkl', 'rb'))
 
-    review = preprocessing_task(data.reviews)
+    review = preprocessing_task(data['reviews'])
     X = tfidf.transform(pd.Series(review))
     # print("vector created")
 
