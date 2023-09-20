@@ -1,4 +1,4 @@
-# Movie Counsel - Your own 🍿 Movie/Series Recommender-System with a inbuild Sentiment Analyzer tool.
+# Sentiment Analyzer for Movie Reviews
 [![Site](https://img.shields.io/static/v1?label=visit%20Website&message=Movie%20Counsel%20Page&color=yellow)](https://movie-counsel.streamlit.app)
 [![Linkedin](https://img.shields.io/static/v1?label=visit&message=My%20Linkedin%20Page&color=blue&logo=linkedin)](https://www.linkedin.com/in/shailesh-bisht-b42a73184/)
 [![Hosted-on](https://img.shields.io/static/v1?label=API%20hosted%20on&message=railway&color=orange&logo=railway)](https://railway.app/)
@@ -6,13 +6,13 @@
 [![Sentiment](https://img.shields.io/static/v1?label=Sentiment&message=Analysis&color=purple&logo=python)]()
 <br>
 
-## 1. App Introduction
-This Streamlit based Web app helps you find the right recommendation for your favourite Movies or TV Shows. Find movies from differrent genres and get recommendation for the same.
-- App Features
-    - Content + Popularity Based
-    - Based on  [IMDB Movies Dataset](https://www.kaggle.com/datasets/ashishjangra27/imdb-movies-dataset)
-    - Search and select max 5 Movies of your choice and get recommendation for those movies, with complete details like Cover Photo, Plot, Genre, Runtime, Country, Language, Kind, Director, Star-Cast etc.
+<!-- ## 1. App Introduction
+This Streamlit based Web app comprises of two modules:-
+- (i) Movie Recommeder System [visit for more details](https://github.com/peskyji/Recommender-System)
+- (ii) Sentiment Analyzer
 
+# Sentiment Analyzer
+- 
 ### i). What do I need to make it work?
 Python 3.9 or later and must have below pypi packages
 ```
@@ -58,4 +58,80 @@ Or Simply run `pip install -r requirements.txt`
 - ML Model i.e., the similarity matrix being bigger in size is stored in [G-Drive](https://drive.google.com/drive/u/0/folders/1eYmIMKxbsw8CXg6qKJDU2NTP6qwkv0C9)
 - Stremlit Cloud is used for hosting the web app.
 ## 4. Find the demo below
-https://github.com/peskyji/Recommender-System/assets/65287730/1bc03add-2872-466c-b8c5-9416469aff14
+https://github.com/peskyji/Recommender-System/assets/65287730/1bc03add-2872-466c-b8c5-9416469aff14 -->
+
+
+
+<!-- ![GitHub](https://img.shields.io/github/license/your-username/sentiment-analyzer)
+![GitHub stars](https://img.shields.io/github/stars/your-username/sentiment-analyzer?style=social)
+![GitHub forks](https://img.shields.io/github/forks/your-username/sentiment-analyzer?style=social) -->
+
+## Overview
+
+Sentiment Analyzer for Movie Reviews is a comprehensive tool designed to evaluate the sentiment of movie reviews. This project is an integral part of the Movie Counsel web application, which empowers users to explore and discover movies tailored to their preferences.
+
+**Key Features:**
+
+- Sentiment Analyzer is implemented as a robust API using the FastAPI framework.
+- The API is hosted on the Railway cloud platform, ensuring scalability, reliability, and ease of deployment.
+- Sentiment analysis models are trained on a vast dataset comprising approximately 180,000 movie reviews sourced from IMDB.
+- The reviews are scrapped from IMDB for both Hollywood and Bollywood releases from 2019 to September 2023 with help of Beautiful Soup.
+
+## Data Preprocessing
+
+The heart of any sentiment analysis model is the quality of its training data. Therefore, the dataset undergoes a rigorous preprocessing phase to optimize its quality for analysis.
+
+**Data Cleaning and Preprocessing Tasks Include:**
+
+- Correcting data formats to ensure uniformity and consistency.
+- Assigning review labels, i.e., classifying reviews as positive or negative based on the accompanying ratings.
+- Removing special characters and symbols from the text, facilitating more accurate sentiment analysis.
+- Applying word stemming techniques to further enhance the quality of the text data.
+
+## Model Building
+
+Sentiment Analyzer leverages state-of-the-art machine learning algorithms to create an accurate and robust sentiment classification model.
+
+**Model Building Highlights:**
+
+- Combination of machine learning algorithms, including Logistic Regression, Complement Naive Bayes, and XGBoost, to achieve precise sentiment classification.
+- Incorporation of pretrained models such as roBERTa to expedite the training process and enhance overall performance.
+- Continuous model evaluation and refinement to ensure the highest level of sentiment analysis accuracy.
+
+## Web API
+
+To make sentiment analysis accessible and user-friendly, Sentiment Analyzer provides a comprehensive web API. Users can interact with the API to gain insights into the sentiment of movie reviews.
+
+**Key API Features:**
+
+- Accepts HTTP POST requests containing movie reviews as input.
+- Returns the probability of both negative and positive sentiments predicted by each model.
+- Enables users to integrate sentiment analysis capabilities into their own applications and projects.
+
+**Example Request:**
+
+```
+**Request**
+{
+  "reviews": "This movie was absolutely fantastic! I loved every moment of it."
+}
+
+**Response** - model:[negative score, positive score]
+{
+    "logistic_regression": {[0.15, 0.85]},
+    "complement_naive_bayes": {[0.18, 0.82]},
+    "xgboost": {[0.13, 0.87]}
+}
+```
+## Installation
+To set up and use Sentiment Analyzer in your own project, follow these steps:
+
+- Clone this repository to your local machine.
+- Install the required dependencies using pip install -r requirements.txt.
+- Run the FastAPI application using uvicorn main:app --reload.
+
+## Acknowledgments
+We would like to express our gratitude to the open-source community and the developers of FastAPI for their invaluable contributions.
+
+Happy sentiment analyzing!
+
