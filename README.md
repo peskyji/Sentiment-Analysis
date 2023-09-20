@@ -8,7 +8,7 @@
 
 ## Overview
 
-Sentiment Analyzer for Movie Reviews is a comprehensive tool designed to evaluate the sentiment of movie reviews. This project is an integral part of the Movie Counsel web application, which empowers users to explore and discover movies tailored to their preferences.
+Sentiment Analyzer for Movie Reviews is a comprehensive tool designed to evaluate the sentiment of movie reviews. This project is an integral part of the [Movie Counsel](https://movie-counsel.streamlit.app) web application, which empowers users to explore and discover movies tailored to their preferences.
 
 **Key Features:**
 
@@ -50,13 +50,13 @@ To make sentiment analysis accessible and user-friendly, Sentiment Analyzer prov
 - Returns the probability of both negative and positive sentiments predicted by each model.
 - Enables users to integrate sentiment analysis capabilities into their own applications and projects.
 
-**Request**
+- Request
 ```
 {
   "reviews": "This movie was absolutely fantastic! I loved every moment of it."
 }
 ```
-**Response** - model:[negative score, positive score]
+- Response - model:[negative score, positive score]
 ```
 {
     "logistic_regression": {[0.15, 0.85]},
@@ -64,6 +64,7 @@ To make sentiment analysis accessible and user-friendly, Sentiment Analyzer prov
     "xgboost": {[0.13, 0.87]}
 }
 ```
+- [visit to test the API](https://sentiment-analysis-production.up.railway.app/docs)
 ## Installation
 To set up and use Sentiment Analyzer in your own project, follow these steps:
 
@@ -75,11 +76,13 @@ To set up and use Sentiment Analyzer in your own project, follow these steps:
 ```
     pip install -r requirements.txt
 ```
-- Run the FastAPI application uvicorn main:app --reload.
+- Run the FastAPI application
 ```
-uvicorn main:app --reload
+uvicorn fastapi_app:app --reload
 ```
 - Visit FastAPI [documentation](https://fastapi.tiangolo.com/) for more details
+
+<br>
 
 ## Acknowledgments
 I would like to express my gratitude to the open-source community and the developers of FastAPI for their invaluable contributions.
