@@ -1,6 +1,6 @@
 from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
-import pickle
+from uvicorn import run
 from nltk.stem import PorterStemmer
 import pandas as pd
 import re
@@ -9,6 +9,9 @@ import joblib
 
 # create an object of FastAPI
 app = FastAPI()
+
+if __name__ == "__main__":
+    run(app, timeout_keep_alive=20)
 
 # create objects to receive input from client
 class Input(BaseModel):
