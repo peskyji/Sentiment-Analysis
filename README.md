@@ -83,10 +83,11 @@ The heart of any sentiment analysis model is the quality of its training data. T
 
 **Data Cleaning and Preprocessing Tasks Include:**
 
-- Correcting data formats to ensure uniformity and consistency.
+- Correcting data formats to ensure uniformity and consistency with help of Pandas.
 - Assigning review labels, i.e., classifying reviews as positive or negative based on the accompanying ratings.
 - Removing special characters and symbols from the text, facilitating more accurate sentiment analysis.
-- Applying word stemming techniques to further enhance the quality of the text data.
+- Applying word stemming techniques to further enhance the quality of the text data with help of nltk.
+- visit the Google Colab notebooks in this [📁](https://drive.google.com/drive/folders/11Cm5Co2d-X9SrE8r7ANPu4-as3F_ik5Q?usp=drive_link) for detailed analysis.
 
 ## Model Building
 
@@ -97,6 +98,7 @@ Sentiment Analyzer leverages state-of-the-art machine learning algorithms to cre
 - Combination of machine learning algorithms, including Logistic Regression, Complement Naive Bayes, and XGBoost, to achieve precise sentiment classification.
 - Incorporation of pretrained models such as roBERTa to expedite the training process and enhance overall performance.
 - Continuous model evaluation and refinement to ensure the highest level of sentiment analysis accuracy.
+- visit the Google Colab notebooks in this [📁](https://drive.google.com/drive/folders/11Cm5Co2d-X9SrE8r7ANPu4-as3F_ik5Q?usp=drive_link) for detailed analysis.
 
 ## Web API
 
