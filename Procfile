@@ -1,1 +1,1 @@
-gunicorn fastapi_app:app --workers $WORKERS --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0
+web: gunicorn fastapi_app:app -w 2 -k uvicorn.workers.UvicornWorker
