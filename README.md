@@ -1,7 +1,7 @@
 # Sentiment Analyzer for Movie Reviews
 [![Site](https://img.shields.io/static/v1?label=visit%20Website&message=Movie%20Counsel%20Page&color=yellow)](https://movie-counsel.streamlit.app)
 [![Linkedin](https://img.shields.io/static/v1?label=visit&message=My%20Linkedin%20Page&color=blue&logo=linkedin)](https://www.linkedin.com/in/shailesh-bisht-b42a73184/)
-[![Hosted-on](https://img.shields.io/static/v1?label=API%20hosted%20on&message=railway&color=orange&logo=railway)](https://railway.app/)
+[![Hosted-on](https://img.shields.io/static/v1?label=API%20hosted%20on&message=Render&color=orange&logo=render)](https://render.com/)
 [![python](https://img.shields.io/static/v1?label=Python&message=%3E=3.9&color=brown&logo=python)]()
 [![Sentiment](https://img.shields.io/static/v1?label=Sentiment&message=Analysis&color=purple&logo=python)]()
 <br>
@@ -13,7 +13,7 @@ Sentiment Analyzer for Movie Reviews is a comprehensive tool designed to evaluat
 **Key Features:**
 
 - Sentiment Analyzer is implemented as a robust API using the FastAPI framework.
-- The API is hosted on the Railway cloud platform, ensuring scalability, reliability, and ease of deployment.
+- The API is hosted on the Render cloud platform, ensuring scalability, reliability, and ease of deployment.
 - Sentiment analysis models are trained on a vast dataset comprising approximately 180,000 movie reviews sourced from IMDB.
 - The reviews are scrapped from IMDB for both Hollywood and Bollywood releases from 2019 to September 2023 with help of Beautiful Soup.
 
@@ -64,7 +64,6 @@ To make sentiment analysis accessible and user-friendly, Sentiment Analyzer prov
     "xgboost": {[0.13, 0.87]}
 }
 ```
-- [visit to test the API](https://sentiment-analysis-production.up.railway.app/docs)
 ## Installation
 To set up and use Sentiment Analyzer in your own project, follow these steps:
 
