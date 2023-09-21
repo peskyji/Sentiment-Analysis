@@ -1,2 +1,2 @@
-gunicorn -w 2 -k uvicorn.workers.UvicornWorker fastapi_app:app
+gunicorn -w -k uvicorn.workers.UvicornWorker fastapi_app:app
 
