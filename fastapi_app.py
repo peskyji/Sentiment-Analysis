@@ -90,16 +90,16 @@ async def prediction(data:Input):
         print("cnb prediction completed")
     except Exception as exp:
         print(f"problem cnb prediction - {str(exp)}")
-    # try:
-    #     xgb_prob =  xgb.predict_proba(X)[0]
-    #     print("xgb prediction completed")
-    # except Exception as exp:
-    #     print(f"problem xgb prediction - {str(exp)}")
+    try:
+        xgb_prob =  xgb.predict_proba(X)[0]
+        print("xgb prediction completed")
+    except Exception as exp:
+        print(f"problem xgb prediction - {str(exp)}")
      
     try:
         prob = {
                     'lr':[float(lr_prob[0]), float(lr_prob[1])], 
-                    # 'xgb':[float(xgb_prob[0]), float(xgb_prob[1])],
+                    'xgb':[float(xgb_prob[0]), float(xgb_prob[1])],
                     'cnb':[float(cnb_prob[0]), float(cnb_prob[1])]
                 }
         print(prob)
