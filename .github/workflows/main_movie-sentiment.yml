@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'movie-sentiment'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F3B6F81CA0094E5FA29A72F09D534F07 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F54F47A84244AFEB8FFE5D3C01026B9 }}
